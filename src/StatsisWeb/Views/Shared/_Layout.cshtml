@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/style.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+
+    <script src="~/lib/shim.min.js"></script>
+    <script src="~/lib/zone.js"></script>
+    <script src="~/lib/Reflect.js"></script>
+    <script src="~/lib/system.src.js"></script>
+    <script src="~/system.config.js"></script>
+    @RenderSection("scripts")
+</body>
+</html>

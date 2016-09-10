@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D29F244D-1AA0-40AC-948B-EF1FDBDA3966}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{016E6711-F7DA-4C7C-B6FA-A47F82A351B8}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "StatsisWeb", "src\StatsisWeb\StatsisWeb.xproj", "{66AD52CD-13EA-443A-9FE5-09D222876307}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66AD52CD-13EA-443A-9FE5-09D222876307}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66AD52CD-13EA-443A-9FE5-09D222876307}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66AD52CD-13EA-443A-9FE5-09D222876307}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66AD52CD-13EA-443A-9FE5-09D222876307}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{66AD52CD-13EA-443A-9FE5-09D222876307} = {D29F244D-1AA0-40AC-948B-EF1FDBDA3966}
+	EndGlobalSection
+EndGlobal
