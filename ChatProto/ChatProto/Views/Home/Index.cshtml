@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@section styles{
+    @Styles.Render("~/bundles/styles/operator")
+}
+
+@section scripts{
+    @Scripts.Render("~/signalr/hubs")
+    @Scripts.Render("~/bundles/operator")
+}
