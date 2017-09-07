@@ -1,25 +1,49 @@
 ﻿import ngmodule from "./app"
 
-var chatHubProxy = $.connection.chatHub;
+angular.module("app").config(["$stateProvider", "$urlServiceProvider", function ($stateProvider, $urlServiceProvider) {
+    $stateProvider.state('home', {
+        url: '/',
+        templateUrl: 'startbutton.html',
+        controller: 'operatorCtrl'
+    });
 
-chatHubProxy.client.visitorConnected = function (vid, name, time) {
+    $urlServiceProvider.rules.otherwise({ state: 'home' });
+}]);
 
+class OperatorChat {
+
+    constructor($rootScope) {
+        this.$rootScope = $rootScope;
+        var chatHubProxy = $.connection.chatHub;
+
+        chatHubProxy.client.visitorConnected = function (vid, name, time) {
+
+        }
+
+        chatHubProxy.client.visitorWentOffline = function (vid, name, time) {
+
+        }
+
+        chatHubProxy.client.visitorCameOnline = function (vid, name, time) {
+
+        }
+
+        chatHubProxy.client.recievedMessage = function (vid, sourceid, sourceName, sourcetime, messagetype, message) {
+
+        }
+    }
+
+    start(name) {
+        $.connection.hub.qs = { 'op': 'Nimesh' };
+
+        $.connection.hub.start().done(function () {
+
+        });
+    }
 }
 
-chatHubProxy.client.visitorWentOffline = function (vid, name, time) {
+ngmodule.factory('operatoChatService', ["$rootScope", function ($rootScope) {
+    return new OperatorChat($rootScope);
+}]);
 
-}
-
-chatHubProxy.client.visitorCameOnline = function (vid, name, time) {
-
-}
-
-chatHubProxy.client.recievedMessage = function (vid, sourceid, sourceName, sourcetime, messagetype, message) {
-
-}
-
-$.connection.hub.start().done(function () {
-
-});
-
-export default chatHubProxy;
+export default OperatorChat;

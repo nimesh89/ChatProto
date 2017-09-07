@@ -1,10 +1,14 @@
-﻿using ChatProto.Utilities;
+﻿using ChatProto.Middleware;
+using ChatProto.Utilities;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 using Owin;
+using StackExchange.Redis;
+using System.Configuration;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Microsoft.Owin.Extensions;
 
 namespace ChatProto
 {
@@ -12,10 +16,19 @@ namespace ChatProto
     {
         public void Configuration(IAppBuilder app)
         {
+            app.Use<AuthenticationMidleware>();
+
+            app.UseStageMarker(PipelineStage.Authenticate);
+
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             app.MapSignalR();
             GlobalHost.DependencyResolver.Register(typeof(IJavaScriptMinifier), () => new SignalRMinifier());
+
+            var connection = ConnectionMultiplexer.Connect(ConfigurationManager.AppSettings["RedisConnection"]);
+            GlobalHost.DependencyResolver.Register(typeof(ChatHub), () => new ChatHub(new RedisRepo(connection)));
+            GlobalHost.DependencyResolver.Register(typeof(IUserIdProvider), () => new ChatUserIdProvider());
+
             RegisterBundles(BundleTable.Bundles);
         }
 

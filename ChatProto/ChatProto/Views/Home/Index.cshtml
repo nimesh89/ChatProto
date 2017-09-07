@@ -5,6 +5,18 @@
 
 <h2>Index</h2>
 
+<div data-ng-app="app" class="row">
+    <div class="col-lg-12">
+        <data-ui-view>
+
+        </data-ui-view>
+    </div>
+
+    <script type="text/ng-template" id="startbutton.html">
+        <button data-ng-click="startHub()">Srart Hub</button>
+    </script>
+</div>
+
 @section styles{
     @Styles.Render("~/bundles/styles/operator")
 }

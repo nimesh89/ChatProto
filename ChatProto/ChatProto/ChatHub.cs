@@ -4,11 +4,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Threading.Tasks;
+using ChatProto.Utilities;
 
 namespace ChatProto
 {
     public class ChatHub : Hub
     {
+        private readonly RedisRepo _cacheRepo;
+
+        public ChatHub(RedisRepo redisRepo)
+        {
+            _cacheRepo = redisRepo;
+        }
+
         public override Task OnConnected()
         {
             return base.OnConnected();
