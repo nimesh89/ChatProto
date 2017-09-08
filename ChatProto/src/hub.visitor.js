@@ -49,7 +49,7 @@ class VisitorChat {
         });
     }
 
-    start(name) {
+    start() {
        
     }
 
@@ -58,7 +58,7 @@ class VisitorChat {
     }
 }
 
-ngmodule.factory('operatoChatService', ["$rootScope", "$q", "$timeout", function ($rootScope, $q, $timeout) {
+ngmodule.factory('visitorChatService', ["$rootScope", "$q", "$timeout", function ($rootScope, $q, $timeout) {
     return new VisitorChat($rootScope, $q, $timeout);
 }]);
 
