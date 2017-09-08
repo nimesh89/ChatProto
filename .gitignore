@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/ChatProto/App
+/ChatProto/bin
+/ChatProto/node_modules
+/ChatProto/obj/Debug
+/packages
+*.log
+*.json

@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div data-ng-app="app" class="row">
+    <div class="col-lg-12">
+        <data-ui-view>
+
+        </data-ui-view>
+    </div>
+
+    <script type="text/ng-template" id="startbutton.html">
+        <div class="row">
+            <div class="col-lg-12">
+                <form name="operatorStartForm" ng-submit="startHub()" novalidate>
+                    <div class="row">
+                        <div class="col-lg-5"><input class="form-control" ng-disabled="op.hubStarted" ng-model="op.opname" name="opname" type="text" placeholder="Enter Name" /></div>
+                        <div class="col-lg-2"><button class="btn btn-default" ng-disabled="op.hubStarted" type="submit">Srart Hub</button></div>
+                        <div class="col-lg-2"><button class="btn btn-default" ng-disabled="!op.hubStarted" ng-click="stopHub()" type="button">Stop Hub</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+             <div class="col-lg-12">
+                 <data-ui-view>
+
+                 </data-ui-view>
+             </div>
+        </div>
+    </script>
+
+    <script type="text/ng-template" id="opchat.html">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="row">
+                    <div class="col-lg-12">incoming chats</div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">active chats</div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                chat area
+            </div>
+        </div>
+    </script>
+</div>
+
+@section styles{
+    @Styles.Render("~/bundles/styles/operator")
+}
+
+@section scripts{
+    @Scripts.Render("~/signalr/hubs")
+    @Scripts.Render("~/bundles/operator")
+}
