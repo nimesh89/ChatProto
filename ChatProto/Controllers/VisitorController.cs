@@ -13,5 +13,10 @@ namespace ChatProto.Controllers
         {
             return View();
         }
+
+        public ActionResult GetId()
+        {
+            return Json("", JsonRequestBehavior.AllowGet);
+        }
     }
 }

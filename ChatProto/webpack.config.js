@@ -21,15 +21,7 @@ module.exports = {
         filename: "[name].[hash].js"
     },
     module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                loader: "babel-loader",
-                query: {
-                    presets: ["es2015"]
-                }
-            }
-        ],
+        loaders: [],
         rules: [{
             test: /\.scss$/,
             use: extractSass.extract({
@@ -41,6 +33,17 @@ module.exports = {
                 // use style-loader in development
                 fallback: "style-loader"
             })
+        }, 
+        {
+            test: /\.js$/,
+            exclude: /(node_modules|bower_components)/,
+            use: {
+                loader: 'babel-loader',
+                options: {
+                    presets: ["es2015"],
+                    plugins: [require('babel-plugin-transform-object-rest-spread')]
+                }
+            }
         }]
     },
     plugins: [
