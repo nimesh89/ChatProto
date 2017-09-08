@@ -5,6 +5,36 @@
 
 <h2>Visitor</h2>
 
+<div data-ng-app="app" class="row">
+    <div class="col-lg-12">
+        <data-ui-view>
+
+        </data-ui-view>
+    </div>
+
+    <script type="text/ng-template" id="startbutton.html">
+        <div class="row">
+            <div class="col-lg-12">
+                <form name="visitorStartForm" ng-submit="StartChat()" novalidate>
+                    <div class="row">
+                        <div class="col-lg-5"><input class="form-control" ng-disabled="vi.ChatStarted" ng-model="vi.opname" name="viname" type="text" placeholder="Enter Name" /></div>
+                        <div class="col-lg-2"><button class="btn btn-default" ng-disabled="vi.ChatStarted" type="submit">Srart Chat</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <data-ui-view>
+
+                </data-ui-view>
+            </div>
+        </div>
+    </script>
+
+    @Html.Partial("_SharedTemplates")
+</div>
+
 @section scripts{
     @Scripts.Render("~/signalr/hubs")
     @Scripts.Render("~/bundles/visitor")

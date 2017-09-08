@@ -44,11 +44,16 @@
                 </div>
             </div>
             <div class="col-lg-7">
-                chat area
+                <data-ui-view>
+                    chat area
+                </data-ui-view>
             </div>
         </div>
     </script>
+
+    @Html.Partial("_SharedTemplates")
 </div>
+
 
 @section styles{
     @Styles.Render("~/bundles/styles/operator")
