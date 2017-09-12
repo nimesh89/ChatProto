@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Threading.Tasks;
 using ChatProto.Utilities;
+using System.Security.Claims;
 
 namespace ChatProto
 {
@@ -24,6 +25,8 @@ namespace ChatProto
 
         public override Task OnDisconnected(bool stopCalled)
         {
+            var user = this.Context.User;
+            this._cacheRepo.UserDisconnected((user.Identity as ClaimsIdentity).Claims.First(c => c.Type == "Name").Value);
             return base.OnDisconnected(stopCalled);
         }
 

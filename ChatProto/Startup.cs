@@ -26,7 +26,13 @@ namespace ChatProto
             GlobalHost.DependencyResolver.Register(typeof(IJavaScriptMinifier), () => new SignalRMinifier());
 
             var connection = ConnectionMultiplexer.Connect(ConfigurationManager.AppSettings["RedisConnection"]);
-            GlobalHost.DependencyResolver.Register(typeof(ChatHub), () => new ChatHub(new RedisRepo(connection)));
+
+
+            var redisRepo = RedisRepo.GetInstance(connection, (chanel, value) => {
+                GlobalHost.ConnectionManager.GetHubContext<ChatHub>().Clients.All.DisconnectedUser(value);
+            });
+
+            GlobalHost.DependencyResolver.Register(typeof(ChatHub), () => new ChatHub(redisRepo));
             GlobalHost.DependencyResolver.Register(typeof(IUserIdProvider), () => new ChatUserIdProvider());
 
             RegisterBundles(BundleTable.Bundles);
